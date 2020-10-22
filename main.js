@@ -2,6 +2,7 @@ let cards = document.querySelectorAll('.card_inner')
 let firstClick = false
 let counter = 0
 let cardPair = []
+let score = document.querySelector("#score").innerHTML
 
 // c'est bien juste card dans le foreach, je crois que c'est un argument
 cards.forEach((card) => {
@@ -34,7 +35,7 @@ for(let i = 0; i<cards.length; i++){
 
 function check(){
     if(counter==2){
-        if(cardPair[0].querySelector('img').src==cardPair[1].querySelector('img').src){
+        if(  cardPair[0].querySelector('img').src== cardPair[1].querySelector('img').src){
             matched()
         }
         else{
@@ -48,9 +49,10 @@ function matched(){
     cardPair[1].state = 'blocked'
     counter = 0
     cardPair = []
-    let score = document.querySelector("#score").innerHTML
+    
     score++
     document.querySelector('#score').innerHTML = score
+    return score
 }
 
 function unmatched(x,y){
@@ -63,21 +65,29 @@ function unmatched(x,y){
     counter = 0
     cardPair = []
 }
-
 function time(){
-    let secs = 0
-    let mins = 0
-    let SS
-    let MM
-    setInterval(() => {
+    console.log('dans time(). score: ' + score);
+
+    if (score <2){
+        setTimeout( timer(), 1000);
+    }
+}
+let secs = 0
+let mins = 0
+let SS
+let MM
+function timer(){
+    setTimeout(() => {
         secs++
         if(secs==60){secs=0;mins++}
-
+    
         secs<10?SS=`0${secs}`:SS=`${secs}`
         mins<10?MM=`0${mins}`:SS=`${mins}`
-
+    
         document.querySelector('#time').innerHTML = `${MM}:${SS}`
+        if(score != 2){ timer() }
     }, 1000);
+
 }
 
 function shuffle(){
