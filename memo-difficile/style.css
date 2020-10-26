@@ -1,12 +1,17 @@
 body{
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     background-color: lavender;
+    overflow-x: hidden;
 }
 
 #container{
-    height: 550px;
-    margin-left: 25px;
+    height: calc(100% - 85px - 50px); /*write score cointainer#board &&  #scoreAnimation */ 
+    overflow-y: scroll;
+    width: 100%;
+    margin: 60px 0px 0px 25px;
 }
 
 .card_outer{
@@ -31,7 +36,7 @@ body{
     position: absolute;
     height: 100%;
     width: 100%;
-    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(40,40,121,1) 35%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(45deg, #020024 0%, #282879 35%, #00d4ff 100%);
     backface-visibility: hidden;
     border-radius: 10px;
     box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
@@ -42,10 +47,13 @@ body{
 }
 
 #board{
+    position: fixed;
+        bottom: 10px;
+        left: calc(50% - 450px/2);
+    margin: auto;
     height: 85px;
     width: 450px;
     border: 4px solid black;
-    margin: auto;
     text-align: center;
     margin-top: 15px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -54,4 +62,20 @@ img{
     height: 100%;
     width: 100%;
     border-radius: 10px;
+}
+#scoreAnimation{
+    border: 2px solid black;
+    border-radius: 50%;
+
+    width: 60px;
+    height: 50px;
+
+    position: absolute;
+        top: 5px;
+        right: 0px;
+
+    opacity: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 35px;
+    text-align: center;
 }

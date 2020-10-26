@@ -3,7 +3,7 @@ let firstClick = false
 let counter = 0
 let cardPair = []
 let score = document.querySelector("#score").innerHTML
-let srcs = ['images/img1.jpg', 'images/img2.jpg', 'images/img3.jpg', 'images/img4.jpg', 'images/img5.jpg', 'images/img6.jpg', 'images/img7.jpg', 'images/img8.jpg', 'images/img9.jpg', 'images/img10.jpg','images/img1.jpg', 'images/img2.jpg', 'images/img3.jpg', 'images/img4.jpg', 'images/img5.jpg', 'images/img6.jpg', 'images/img7.jpg', 'images/img8.jpg', 'images/img9.jpg', 'images/img10.jpg'];
+let srcs = ['IMG 1', 'IMG 2', 'IMG 3', 'IMG 4', 'IMG 5', 'IMG 6', 'IMG 7', 'IMG 8', 'IMG 9', 'IMG 10','IMG 1', 'IMG 2', 'IMG 3', 'IMG 4', 'IMG 5', 'IMG 6', 'IMG 7', 'IMG 8', 'IMG 9', 'IMG 10'];
 
 // c'est bien juste card dans le foreach, je crois que c'est un argument
 cards.forEach((card) => {
@@ -37,13 +37,53 @@ for(let i = 0; i<cards.length; i++){
 function check(){
     if(counter==2){
         if(  cardPair[0].querySelector('img').src== cardPair[1].querySelector('img').src){
-            alert(srcs[0])
-            matched()
+            // alert(srcs[0])
+            
+            scoreChangeMore()
+
+
+            
         }
         else{
             unmatched(cardPair[0],cardPair[1])
         }
     }
+}
+function scoreChangeMore() {
+    document.getElementById('scoreAnimation').style.background = 'linear-gradient(35deg, #000000 0%, #2c5538 35%, #47a764 70%, #02ff4e 100%)'
+    document.getElementById('scoreAnimation').innerHTML = '+1';
+    matched()
+    requestAnimationFrame(scoreAnimation)
+
+}
+function scoreChangeLess() {
+    document.getElementById('scoreAnimation').style.background = 'linear-gradient(45deg, #240000 0%, #5c1313 35%, #c77171 70%, #e69090 100%)';
+    document.getElementById('scoreAnimation').innerHTML = '+0';
+    requestAnimationFrame(scoreAnimation)
+}
+let i = 1
+let j = 450
+function scoreAnimation() {
+
+    if(i < 450){
+        
+        if(i<250){i = i*1.08}else{i = i*(262/252)}
+        
+        document.getElementById('scoreAnimation').style.right = i+ 'px';
+        document.getElementById('scoreAnimation').style.opacity = i/458;
+        j = 450
+        requestAnimationFrame(scoreAnimation)
+    }else if(j>1){
+        j = j*0.97
+        document.getElementById('scoreAnimation').style.right =  j +'px';
+        document.getElementById('scoreAnimation').style.opacity = j/277;
+        if(j>1){
+            requestAnimationFrame(scoreAnimation)
+        }else{
+            i=1
+        }
+    }
+
 }
 
 function matched(){
@@ -69,7 +109,7 @@ function unmatched(x,y){
 }
 function time(){
 
-    if (score <2){
+    if (score <10){
         setTimeout( timer(), 1000);
     }
 }
@@ -86,7 +126,7 @@ function timer(){
         mins<10?MM=`0${mins}`:MM=`${mins}`
     
         document.querySelector('#time').innerHTML = `${MM}:${SS}`
-        if(score != 2){ timer() }
+        if(score != 10){ timer() }
     }, 1000);
 
 }
@@ -102,7 +142,8 @@ function shuffle(){
     }
     
     for(let i = 0; i<images.length; i++){
-        images[i].src = srcs[i]
+        images[i].src = "images/"+srcs[i].split(" ").join("").toLowerCase() +".jpg"
+
     }
 
 }
