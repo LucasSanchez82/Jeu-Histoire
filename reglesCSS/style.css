@@ -1,0 +1,46 @@
+header{
+background: linear-gradient(15deg, #04054e 0%, #9a51a3 35%, #e43e62 100%);
+border-radius: 10px;
+color: #bebdbd;
+
+}
+body{
+background: linear-gradient(225deg, #b6b4b4  0%, #444377 35%, #000000 100%);
+
+}
+h1{
+    font-size: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    text-align: center;
+    text-decoration: underline;
+}
+h2{
+    font-size: 40px;
+    color: #6d1010;
+}
+a, a:visited{
+  color: black;
+  text-decoration: none;
+  font-family: cursive;  
+  font-size: 20px;
+}
+div{
+    transition: 1s;
+    border-radius: 10px;
+}
+div:hover{
+    background-color: #477a9c;
+}
+ul>ul{
+    border: 2px solid black;
+    border-radius: 10px;
+}
+ul>ul>li{
+    color: blue;
+    font-size: 25px;
+}
+ul{
+    font-size: 30px;
+    color: #ff6600;
+}

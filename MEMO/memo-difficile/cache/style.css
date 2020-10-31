@@ -15,8 +15,8 @@ body{
 }
 
 .card_outer{
-    width: 120px;
-    height: 160px;
+    width: 260px;
+    height: 340px;
     background: transparent;
     perspective: 1200px;
     float: left;
@@ -29,7 +29,7 @@ body{
     height: 100%;
     width: 100%;
     transform-style: preserve-3d;
-    transition: all 0.75s ease;
+    transition: all 0.45s ease;
 }
 
 .front,.back{
@@ -38,7 +38,7 @@ body{
     width: 100%;
     background: linear-gradient(45deg, #020024 0%, #282879 35%, #00d4ff 100%);
     backface-visibility: hidden;
-    border-radius: 10px;
+    border-radius: 35px;
     box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
 
 }
@@ -78,4 +78,17 @@ img{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 35px;
     text-align: center;
+}
+
+@keyframes scaleNone{
+    0%{
+        background: linear-gradient(45deg, #02002400 0%, #28287900 35%, #ffffff00 100%);
+        transform: scale(1);
+        opacity: 1;
+    }
+    100%{
+        background: linear-gradient(45deg, #02002400 0%, #28287900 35%, #ffffff00 100%);
+        transform: scale(1.2);
+        opacity: 0;
+    }
 }

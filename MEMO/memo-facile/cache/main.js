@@ -50,7 +50,7 @@ for(let i = 0; i<cards.length; i++){
 function check(){
     if(counter==2){
         if(  cardPair[0].querySelector('img').src== cardPair[1].querySelector('img').src){
-            verification()   
+            requestAnimationFrame(scoreChangeMore)
             tour++        
         }
         else{
@@ -58,30 +58,12 @@ function check(){
         }
     }
 }
-function verification() {
-    let cardSrcName = cardPair[0].querySelector('img').src
-    cardSrcName = cardSrcName.split('.')
-    cardSrcName.pop()
-    cardSrcName = cardSrcName.join()
-    cardSrcName = cardSrcName.split('/')
-    cardSrcName = cardSrcName.pop()
 
-
-    // alert("ésrca" + srcsA)
-
-    setTimeout(() => {
-        let promptReply = prompt(`c\'est quoi/qui est illustré.e sur cette carte?  ||  ${srcs[0]} ||  ${srcs[1]} ||  ${srcs[2]} ||  ${srcs[3]} ||  ${srcs[4]} ||  ${srcs[5]} ||  ${srcs[6]} ||  ${srcs[7]} ||  ${srcs[8]} ||  ${srcs[9]} || REP${cardSrcName}` ).split(" ").join("").toLowerCase()
-        if(promptReply == cardSrcName) {
-            scoreChangeMore() //quand on repond vrai animation=>score+1
-        }else{
-            scoreChangeLess() //quand on repond faux animation=>score-1
-        }
-    }, 500);
-}
 
 function scoreChangeMore() {
     document.getElementById('scoreAnimation').style.background = 'linear-gradient(35deg, #000000 0%, #2c5538 35%, #47a764 70%, #02ff4e 100%)'
     document.getElementById('scoreAnimation').innerHTML = '+1';
+    counter = 0
     matched()
     requestAnimationFrame(scoreAnimation)
 
@@ -92,20 +74,20 @@ function scoreChangeLess() {
     requestAnimationFrame(scoreAnimation)
 
     
-    cardPair[0].state = 'blocked'
-    cardPair[1].state = 'blocked'
-    counter = 0
-    cardPair = []
-    cardPairFront = []
-    cardPairBack = []
+    // cardPair[0].state = 'blocked'
+    // cardPair[1].state = 'blocked'
+    // counter = 0
+    // cardPair = []
+    // cardPairFront = []
+    // cardPairBack = []
     
-    cardPairOuter = []
+    // cardPairOuter = []
 }
 
 function matched(){
     cardPair[0].state = 'blocked'
     cardPair[1].state = 'blocked'
-/////////   \/     pour que les cartes disparraissent si reponse = vrai    \/    //////////// 
+/////////   \/     pour que les cartes sontt egals    \/    //////////// 
     // cardPair[0].style.display = 'none';
     // cardPair[1].style.display = 'none';
 
@@ -116,19 +98,20 @@ function matched(){
         cardPairOuter[1].style.display = 'none';
         
         cardPairFront[0].style.display = 'none';
+        cardPairFront[1].style.display = 'none';
+
+        cardPairBack[0].style.display = 'none';
         cardPairBack[1].style.display = 'none';
         
         cardPairFront = []
         cardPairBack = []
-        
         cardPairOuter = []
         cardPair = []
-        console.log('c ok');
 
-            counter = 0
+        // counter = 0
 
     }, 1000);
-    counter=0
+    // counter=0
 
 //////////////////////////                 /\                     /////////////////////////////////////
     
@@ -144,12 +127,12 @@ function unmatched(x,y){
     }, 750)
     cardPair[0].state = 'unclicked'
     cardPair[1].state = 'unclicked'
-    counter = 0
          cardPairFront = []
         cardPairBack = []
         
         cardPairOuter = []
     cardPair = []
+    counter = 0
 }
 function time(){
 
@@ -185,7 +168,7 @@ function shuffle(){
     }
     
     for(let i = 0; i<images.length; i++){
-        images[i].src = "images/"+srcs[i].split(" ").join("").toLowerCase() +".png"
+        images[i].src = "cache/images/"+srcs[i].split(" ").join("").toLowerCase() +".png"
     }
 
 }
