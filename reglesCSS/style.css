@@ -28,10 +28,27 @@ a, a:visited{
 div{
     transition: 1s;
     border-radius: 10px;
+    cursor: pointer;
 }
 div:hover{
     background-color: #477a9c;
+    animation: buttonAnimation 0.8s ease;
 }
+@keyframes buttonAnimation{
+    0% {
+        transform: scale(1);
+    }
+    30% {
+    transform: scale(0.98);
+    }
+    60% {
+    transform: scale(1.01);
+    }
+    100% {
+        transform: scale(1.);
+    }
+}
+
 ul>ul{
     border: 2px solid black;
     border-radius: 10px;
