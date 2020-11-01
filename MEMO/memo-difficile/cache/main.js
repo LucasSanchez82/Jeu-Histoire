@@ -70,7 +70,7 @@ function verification() {
     // alert("ésrca" + srcsA)
 
     setTimeout(() => {
-        let promptReply = prompt(`c\'est quoi/qui est illustré.e sur cette carte?  ||  ${srcs[0]} ||  ${srcs[1]} ||  ${srcs[2]} ||  ${srcs[3]} ||  ${srcs[4]} ||  ${srcs[5]} ||  ${srcs[6]} ||  ${srcs[7]} ||  ${srcs[8]} ||  ${srcs[9]} || REP${cardSrcName}` )
+        let promptReply = prompt(`c\'est quoi/qui est illustré.e sur cette carte?  ||  ${srcs[0]} ||  ${srcs[1]} ||  ${srcs[2]} ||  ${srcs[3]} ||  ${srcs[4]} ||  ${srcs[5]} ||  ${srcs[6]} ||  ${srcs[7]} ||  ${srcs[8]} ||  ${srcs[9]} ||` )
         
         if(promptReply == null ){
             for (let k = 0; k < 10; k) {
